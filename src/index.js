@@ -1,3 +1,6 @@
+const express = require("express");
+const app = express();
+
 const contacts = [
   {
     id: 1,
@@ -20,3 +23,12 @@ const contacts = [
     number: "39-23-6423122",
   },
 ];
+
+app.get("/", (request, response) => {
+  response.send("<h1>HELLO WORLD!</h1>");
+});
+
+const PORT = 3001;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
