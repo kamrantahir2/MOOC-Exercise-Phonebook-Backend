@@ -29,7 +29,7 @@ app.get("/", (request, response) => {
 });
 
 app.get("/api/persons", (request, response) => {
-  response.json(JSON.stringify(persons));
+  response.send(JSON.stringify(persons, false, "<br />"));
 });
 
 app.get("/api/info", (request, response) => {
