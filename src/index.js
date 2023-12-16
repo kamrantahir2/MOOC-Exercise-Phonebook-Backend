@@ -64,7 +64,17 @@ app.post("/api/persons", (request, response) => {
 
   const body = request.body;
 
-  if (!body.name) {
+  let names = persons.map(({ name }) => name);
+
+  const includes = names.includes(body.name);
+
+  if (includes) {
+    return response.status(400).json({
+      error: "Contact already exists",
+    });
+  }
+
+  if (!body.name || !body.number) {
     return response.status(400).json({
       error: "Content missing",
     });
